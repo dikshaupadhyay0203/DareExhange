@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+
+{% block title %}All Submitted Dares{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-danger fw-bold">🎯 All Submitted Dares</h2>
+
+  <div class="row g-4">
+    {% for dare in dares %}
+      <div class="col-md-6">
+        <div class="card p-4 d-flex flex-row align-items-start justify-content-between">
+          
+          <!-- Left Side: Details -->
+          <div class="w-75 pe-3">
+            <h5 class="fw-bold text-pink mb-2">{{ dare.id }} {{ dare.name }}</h5>
+            <p class="mb-1"><strong>Email:</strong> {{ dare.email }}</p>
+            <p class="mb-1"><strong>Phone:</strong> {{ dare.phone_number }}</p>
+            <p class="mb-1"><strong>Deadline:</strong> {{ dare.deadline }}</p>
+            <p><strong>Dare:</strong> {{ dare.dare }}</p>
+            <a href="{% url 'delete_dare' dare.id %}" class="btn btn-danger btn-sm mt-2">Delete</a>
+            <a href="{% url 'edit_dare' dare.id %}" class="btn btn-danger btn-sm mt-2">Edit</a>
+          </div>
+
+          <!-- Right Side: Image -->
+          <div class="w-25 text-end">
+            {% if dare.image %}
+              <img src="{{ dare.dare_image.url }}" alt="Dare Image" class="img-fluid rounded" style="max-width: 100px;">
+            {% else %}
+              <img src="https://via.placeholder.com/100" alt="No Image" class="img-fluid rounded" style="max-width: 100px;">
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

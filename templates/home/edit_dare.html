@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Edit Dare{% endblock %}
+
+{% block body %}
+<div class="container col-md-6 mt-5">
+  <h2 class="text-center mb-4 text-danger fw-bold">Edit Your Dare ✏️</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Your Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{ dare.name }}" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ dare.email }}" required />
+    </div>
+    <div class="mb-3">
+      <label for="phone_number" class="form-label">Phone Number</label>
+      <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ dare.phone_number }}" required />
+    </div>
+    <div class="mb-3">
+      <label for="deadline" class="form-label">Deadline</label>
+      <input type="date" class="form-control" id="deadline" name="deadline" value="{{ dare.deadline|date:'Y-m-d' }}" required />
+    </div>
+    <div class="mb-3">
+      <label for="dare" class="form-label">Dare Description</label>
+      <textarea class="form-control" id="dare" name="dare" rows="4" required>{{ dare.dare }}</textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-pink">Update Dare</button>
+      <a href="{% url 'dares' %}" class="btn btn-secondary ms-2">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

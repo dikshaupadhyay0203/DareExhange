@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dare Exchange</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --pink-light: #ff85b3;
+            --pink-dark: #ff2b72;
+            --text-light: #ffffff;
+            --bg-dark: #121212;
+            --text-dark: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--pink-light);
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: var(--bg-dark) !important;
+            color: var(--text-dark) !important;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #ff7eb9, #ff65a3);
+            padding: 1rem;
+        }
+
+        .dark-mode .navbar {
+            background: #1f1f1f;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+        }
+
+        .btn-pink {
+            background-color: var(--pink-dark);
+            color: white;
+            font-weight: bold;
+            border-radius: 2rem;
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-pink:hover {
+            background-color: #e02568;
+        }
+
+        .btn-outline-pink {
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 6px 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-pink:hover {
+            background-color: white;
+            color: var(--pink-dark);
+        }
+
+        .dark-mode .btn-outline-pink {
+            border-color: #f8f9fa;
+            color: #f8f9fa;
+        }
+
+        .dark-mode .btn-outline-pink:hover {
+            background-color: #f8f9fa;
+            color: var(--pink-dark);
+        }
+
+        .toggle-darkmode {
+            background-color: var(--pink-dark);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-darkmode:hover {
+            background-color: #e02568;
+        }
+
+        .dark-mode a, .dark-mode h1, .dark-mode p {
+            color: var(--text-dark) !important;
+        }
+
+        .how-box, .why-box {
+            background-color: #ffc1dd;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .how-box, .dark-mode .why-box {
+            background-color: #1f1f1f;
+            color: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body id="mainBody">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap">
+        <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="{% url 'home' %}">
+            <img src="{% static 'img/dare_logo.png' %}" alt="Dare Exchange Logo">
+            Dare Exchange
+        </a>
+
+        <div class="d-flex align-items-center flex-wrap gap-2">
+            <ul class="navbar-nav me-3 d-none d-lg-flex">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+                <li class="nav-item"><a class="nav-link" href="#join">Join</a></li>
+            </ul>
+
+            <a href="{% url 'dares' %}" class="btn btn-pink me-2">
+                <i class="fa-solid fa-bolt me-1"></i> Dares
+            </a>
+            {% if request.user.is_authenticated %}
+
+             <a href="{% url 'logout' %}" class="btn-outline-pink me-2">Logout</a>
+
+             {% else %}
+            <a href="{% url 'login' %}" class="btn-outline-pink me-2">Login</a>
+            <a href="{% url 'register' %}" class="btn-outline-pink">Register</a>
+             {% endif %}
+            <button class="toggle-darkmode ms-2" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<main class="container py-4">
+    {% block body %}
+    {% endblock %}
+</main>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+
+</body>
+</html>

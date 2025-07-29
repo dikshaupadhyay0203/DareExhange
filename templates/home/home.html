@@ -1,0 +1,105 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Home | DareXchange{% endblock %}
+
+{% block body %}
+
+<!-- Hero Section -->
+<section id="home" class="text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold text-white">Welcome to DareXchange 🎯</h1>
+    <p class="lead text-white-50">
+      The ultimate platform for college students to share, accept, and complete exciting dares. 
+      Build friendships, create memories, and step out of your comfort zone!
+    </p>
+    <a href="#join" class="btn btn-pink mt-3">Get Started</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="text-center py-5">
+  <div class="container">
+    <h2 class="section-title">What is DareXchange?</h2>
+    <p class="lead">
+      An interactive platform where college students exchange bold, creative dares — 
+      anonymously or with friends. Spark confidence, make friends, and laugh together!
+    </p>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how" class="py-5 text-center" style="background-color: #ffaad4;">
+  <div class="container">
+    <h2 class="section-title text-white">How It Works</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 how-box">
+          <i class="fa-solid fa-user-plus fa-2x mb-3" style="color: #cc2e5d;"></i>
+          <a href="{% url 'create_dare' %}" class="text-decoration-none text-dark">
+            <h4 class="fw-bold">Step 1: Join</h4>
+          </a>
+          <p>Create your profile and be part of the dare community.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 how-box">
+          <i class="fa-solid fa-bolt fa-2x mb-3" style="color: #cc2e5d;"></i>
+          <a href="{% url 'dares' %}" class="text-decoration-none text-dark">
+            <h4 class="fw-bold">Step 2: Dare</h4>
+          </a>
+          <p>Send or receive dares — anonymously or with a twist!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br><br>
+<!-- Why Choose Section -->
+<section id="why" class="py-5 text-center" style="background-color: #ffaad4;">
+  <div class="container">
+    <h2 class="section-title text-white mb-5">Why Choose DareXchange</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 rounded-4 why-box">
+          <i class="fa-solid fa-lock fa-2x mb-3 text-warning"></i>
+          <h5 class="fw-bold">Safe & Secure</h5>
+          <p>All dares are moderated to ensure safety and fun for everyone</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 rounded-4 why-box">
+          <i class="fa-solid fa-graduation-cap fa-2x mb-3 text-dark"></i>
+          <h5 class="fw-bold">Student-Only</h5>
+          <p>Exclusive platform for verified college students</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 rounded-4 why-box">
+          <i class="fa-solid fa-tablet-screen-button fa-2x mb-3 text-primary"></i>
+          <h5 class="fw-bold">Mobile Ready</h5>
+          <p>Responsive design works perfectly on all devices</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 rounded-4 why-box">
+          <i class="fa-solid fa-star fa-2x mb-3 text-warning"></i>
+          <h5 class="fw-bold">Rewards System</h5>
+          <p>Earn points, badges, and recognition for completing dares</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Join Section -->
+<section id="join" class="py-5 text-center">
+  <div class="container">
+    <h2 class="section-title">Ready to Take the Dare?</h2>
+    <p class="lead">Join the most thrilling student event of the year. Be bold. Be fun. Be unforgettable!</p>
+    <a href="{% url 'create_dare' %}" class="btn btn-pink mt-3">Join Now</a>
+  </div>
+</section>
+
+{% endblock %}
